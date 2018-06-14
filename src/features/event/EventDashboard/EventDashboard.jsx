@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Button } from 'semantic-ui-react'
+import cuid from 'cuid';
 import EventList from '../EventList/EventList'
 import EventForm from '../EventForm/EventForm'
       
@@ -67,18 +68,32 @@ import EventForm from '../EventForm/EventForm'
      //this.handleCancel = this.handleCancel.bind(this);
  
     
+
      
     handleFormOpen = () => {
        this.setState({
          isOpen: true
-       })
+       });
 
-    }
+    };
     handleCancel = () => {
       this.setState({
         isOpen: false
       })
+    };
+    handleCreateEvent =(newEvent) => {
+         newEvent.id =cuid()
+         newEvent.hostPhotoURL = '/assets/user.png';
+         const updatedEvents = [...this.state.events,newEvent];
+         this.setState({
+               events:updatedEvents,
+               isOpen: false
+
+
+         })
+
     }
+
 
   render() {
     return (
@@ -91,7 +106,7 @@ import EventForm from '../EventForm/EventForm'
                 
                 <Button onClick={this.handleFormOpen} positive content ='Create Event'/>
                
-               {this.state.isOpen && <EventForm handleCancel={this.handleCancel}/>}
+               {this.state.isOpen && <EventForm createEvent={this.handleCreateEvent} handleCancel={this.handleCancel}/>}
              
         </Grid.Column> 
         
