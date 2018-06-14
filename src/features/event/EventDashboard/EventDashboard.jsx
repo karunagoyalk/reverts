@@ -67,6 +67,7 @@ import EventForm from '../EventForm/EventForm'
      //this.handleCancel = this.handleCancel.bind(this);
  
     
+     
     handleFormOpen = () => {
        this.setState({
          isOpen: true
