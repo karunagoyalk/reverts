@@ -35,6 +35,7 @@ import SignedInMenu from '../Menus/SignedInMenu'
                  Re-vents
                </Menu.Item>
                <Menu.Item as={NavLink}  to='/events'  name="Events" />
+               <Menu.Item as={NavLink}  to='/test'  name="Test" />
                {authenticated &&
                <Menu.Item as={NavLink}  to='/people'  name="People" />}
               {authenticated && 
